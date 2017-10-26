@@ -1,0 +1,42 @@
+Hi
+When i configure Search Guard, i've this error 
+ /usr/share/elasticsearch/plugins/search-guard-5/tools/sgadmin.sh -h lelani11 -p 9311  -cd /usr/-kspass Filipe69! -ts /etc/elasticsearch/sgadmin.jks -tspass Filipe69! -nhnv -dg
+WARNING: JAVA_HOME not set, will use /bin/java
+Search Guard Admin v5
+Will connect to lelani11:9311 ... done
+Diagnostic trace written to: /root/sgadmin_diag_trace_2017-Oct-25_17-08-14.txt
+Contacting elasticsearch cluster 'lelani10' and wait for YELLOW clusterstate ...
+Cannot retrieve cluster state due to: None of the configured nodes are available: [{#transport#-1}{TOwKVHnSRSCF8nV
+   * Try running sgadmin.sh with -icl and -nhnv (If thats works you need to check your clustername as well as host
+   * If this is not working, try running sgadmin.sh with --diagnose and see diagnose trace log file)
+Cannot retrieve cluster state due to: None of the configured nodes are available: [{#transport#-1}{TOwKVHnSRSCF8nV
+   * Try running sgadmin.sh with -icl and -nhnv (If thats works you need to check your clustername as well as host
+   * If this is not working, try running sgadmin.sh with --diagnose and see diagnose trace log file)
+
+
+On the log file of elasticsearch : 
+[2017-10-25T16:57:56,937][WARN ][c.f.s.s.t.SearchGuardSSLNettyTransport] [lelani11] exception caught on transport
+io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 474554202f20485454502f312e310d0a486f73743a206c6653d300d0a557067726164652d496e7365637572652d52657175657374733a20310d0a557365722d4167656e743a204d6f7a696c6c612f352e765636b6f29204368726f6d652f35362e302e323932342e3837205361666172692f3533372e33360d0a4163636570743a20746578742f687462f2a3b713d302e380d0a4163636570742d456e636f64696e673a20677a69702c206465666c6174652c20736463680d0a4163636570742d4c61
+        at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:968) [netty-handler-4.1.7.Final.jar:4.1.7.Final]
+        at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:411) [netty-codec-4.1.
+        at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:248) [netty-codec-4.1
+        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:363
+        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:349
+        at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:341)
+        at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1334) [nett
+        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:363
+        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:349
+        at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:926) [netty-transpo
+        at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:129) [netty-
+        at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:642) [netty-transport-4.1.7.Fina
+        at io.netty.channel.nio.NioEventLoop.processSelectedKeysPlain(NioEventLoop.java:527) [netty-transport-4.1.
+        at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:481) [netty-transport-4.1.7.Fin
+        at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:441) [netty-transport-4.1.7.Final.jar:4.1.7.Fin
+        at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [netty-com
+        at java.lang.Thread.run(Thread.java:748) [?:1.8.0_141]
+[2017-10-25T17:06:48,855][ERROR][c.f.s.t.SearchGuardRequestHandler] Cannot authenticate null
+[2017-10-25T17:06:53,625][ERROR][c.f.s.t.SearchGuardRequestHandler] Cannot authenticate null
+[2017-10-25T17:06:59,589][ERROR][c.f.s.t.SearchGuardRequestHandler] Cannot authenticate null
+[2017-10-25T17:08:14,027][ERROR][c.f.s.t.SearchGuardRequestHandler] Cannot authenticate null
+[2017-10-25T17:08:24,931][ERROR][c.f.s.t.SearchGuardRequestHandler] Cannot authenticate null
+[2017-10-25T17:10:20,067][ERROR][c.f.s.t.SearchGuardRequestHandler] Cannot authenticate null
